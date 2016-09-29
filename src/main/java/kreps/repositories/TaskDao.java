@@ -1,11 +1,11 @@
 package kreps.repositories;
 
-import kreps.models.Book;
+import kreps.models.Task;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
 
 @Transactional
-public interface BookDao extends CrudRepository<Book, Long>{
+public interface TaskDao extends CrudRepository<Task, Long>{
 
 }

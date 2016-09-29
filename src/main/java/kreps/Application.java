@@ -1,14 +1,13 @@
 package kreps;
 
 import kreps.models.Account;
+import kreps.models.Task;
 import kreps.repositories.AccountRepository;
+import kreps.repositories.TaskDao;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
@@ -20,7 +19,7 @@ public class Application {
 
 
     @Bean
-    CommandLineRunner init(final AccountRepository accountRepository) {
+    CommandLineRunner init(final AccountRepository accountRepository, final TaskDao taskDao) {
         return new CommandLineRunner() {
             @Override
             public void run(String... arg0) throws Exception {
@@ -30,7 +29,10 @@ public class Application {
 
                 System.out.println(hashedPassword);
                 accountRepository.deleteAll();
-                accountRepository.save(new Account("kreps", hashedPassword));
+                Account account = new Account("kreps", hashedPassword);
+                Account a = accountRepository.save(account);
+                taskDao.deleteAll();
+                taskDao.save(new Task("Create one to many realtion account->task", a.getId()));
 
             }
         };

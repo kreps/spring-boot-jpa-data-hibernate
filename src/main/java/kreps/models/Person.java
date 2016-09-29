@@ -7,7 +7,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "persons")
 public class Person {
 
     @Id
