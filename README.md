@@ -11,9 +11,3 @@
 
 ### Who do I talk to? ###
 kkangro@gmail.com
-
-### Todo ###
-* DB one to many realtions etc.
-    * Author -> Book
-* Basic tests
-* Integration test
