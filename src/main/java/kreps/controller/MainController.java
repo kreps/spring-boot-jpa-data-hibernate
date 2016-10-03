@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MainController {
 
-    @RequestMapping(value = "/info", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model) {
         model.addAttribute("title", "Task manager application");
         model.addAttribute("summary", "Info sisu ja muud asjad");
-        return "info";
+        model.addAttribute("page","info");
+        return "index";
     }
 
 }
