@@ -1,0 +1,8 @@
+<table class="table table-striped">
+    <tr th:each="task,iterationStatus  : ${tasks}">
+        <td th:text="${iterationStatus.count}">1</td>
+        <td th:text="${task.id}">001</td>
+        <td th:text="${task.summary}">Name</td>
+    </tr>
+
+</table>

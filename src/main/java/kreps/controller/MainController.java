@@ -1,4 +1,4 @@
-package kreps.controllers;
+package kreps.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -32,7 +32,9 @@ public class Application {
                 Account account = new Account("kreps", hashedPassword);
                 Account a = accountRepository.save(account);
                 taskDao.deleteAll();
-                taskDao.save(new Task("Create one to many realtion account->task", a.getId()));
+                taskDao.save(new Task("Show task list", a.getId()));
+                taskDao.save(new Task("Commit changes", a.getId()));
+                taskDao.save(new Task("Add bootstrap with webjars", a.getId()));
 
             }
         };

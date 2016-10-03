@@ -1,4 +1,4 @@
-package kreps.controllers;
+package kreps.controller;
 
 import kreps.models.Account;
 import kreps.models.Task;
