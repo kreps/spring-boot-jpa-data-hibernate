@@ -13,20 +13,10 @@ public class TaskController {
     @Autowired
     private TaskDao taskDao;
 
-//    @RequestMapping("/task")
-//    public String test(){
-//        return "tasklist";
-//    }
-
-    @RequestMapping(value = "/task", method = RequestMethod.GET)
+    @RequestMapping(value = "/tasks", method = RequestMethod.GET)
     public String getTodoList(ModelMap model) {
         model.addAttribute("tasks", taskDao.findAll());
         model.addAttribute("page","task/list");
         return "index";
-    }
-
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String test(){
-        return "test.html";
     }
 }

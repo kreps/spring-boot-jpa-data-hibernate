@@ -1,9 +1,5 @@
 package kreps.config;
 
-import kreps.security.RESTAuthenticationEntryPoint;
-import kreps.security.RESTAuthenticationFailureHandler;
-import kreps.security.RESTAuthenticationSuccessHandler;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -20,15 +16,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
-    @Autowired
-    RESTAuthenticationEntryPoint authenticationEntryPoint;
-
-    @Autowired
-    RESTAuthenticationSuccessHandler authenticationSuccessHandler;
-
-    @Autowired
-    RESTAuthenticationFailureHandler authenticationFailureHandler;
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //@formatter:off
@@ -36,20 +23,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().anyRequest().authenticated().and()
                 .httpBasic().and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-//                .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint).and()
-//                .formLogin().successHandler(authenticationSuccessHandler).and()
-//                .formLogin().failureHandler(authenticationFailureHandler).and()
                 .csrf().disable();
-
-
-
         //@formatter:on
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(HttpMethod.GET, "/info");
-        web.ignoring().antMatchers(HttpMethod.GET);
+        web.ignoring().antMatchers(HttpMethod.GET, "/");
+        web.ignoring().antMatchers(HttpMethod.GET, "/app.css");
+        web.ignoring().antMatchers(HttpMethod.GET, "/webjars/**");
     }
 
 }
