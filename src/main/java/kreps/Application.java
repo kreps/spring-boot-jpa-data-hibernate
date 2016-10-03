@@ -29,12 +29,21 @@ public class Application {
 
                 System.out.println(hashedPassword);
                 accountRepository.deleteAll();
+
+
                 Account account = new Account("kreps", hashedPassword);
                 Account a = accountRepository.save(account);
                 taskDao.deleteAll();
                 taskDao.save(new Task("Show task list", a.getId()));
                 taskDao.save(new Task("Commit changes", a.getId()));
                 taskDao.save(new Task("Add bootstrap with webjars", a.getId()));
+
+
+                Account account2 = new Account("kreps2", hashedPassword);
+                Account a2 = accountRepository.save(account2);
+                taskDao.save(new Task("Show task list 2", a.getId()));
+                taskDao.save(new Task("Commit changes 2", a.getId()));
+                taskDao.save(new Task("Add bootstrap with webjars 2", a.getId()));
 
             }
         };
