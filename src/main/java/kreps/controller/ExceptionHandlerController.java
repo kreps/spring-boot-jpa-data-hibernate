@@ -1,25 +1,28 @@
 package kreps.controller;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
 
-@ControllerAdvice
+
+
+@ControllerAdvice//Apply to all controllers
 public class ExceptionHandlerController {
 
-    public static final String DEFAULT_ERROR_VIEW = "error";
+//    public static final String DEFAULT_ERROR_VIEW = "index";
+
+    private Log logger = LogFactory.getLog(ExceptionHandlerController.class);
 
     @ExceptionHandler(value = {Exception.class, RuntimeException.class})
-    public ModelAndView defaultErrorHandler(HttpServletRequest request, Exception e) {
-        ModelAndView mav = new ModelAndView(DEFAULT_ERROR_VIEW);
-
-        mav.addObject("datetime", new Date());
-        mav.addObject("exception", e);
-        mav.addObject("url", request.getRequestURL());
+    public ModelAndView handleError(HttpServletRequest request, Exception e) {
+        logger.error("Request: " + request.getRequestURL() + " raised exception.",e);
+        ModelAndView mav = new ModelAndView("index");
+        mav.addObject("page","error/error");
+        mav.addObject("message",e.getMessage());
         return mav;
     }
 }
