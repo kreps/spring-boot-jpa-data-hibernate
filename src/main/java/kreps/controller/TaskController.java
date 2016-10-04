@@ -13,7 +13,9 @@ public class TaskController {
     @Autowired
     private TaskDao taskDao;
 
-    @RequestMapping(value = "/tasks", method = RequestMethod.GET)
+
+
+    @RequestMapping(value = "/task", method = RequestMethod.GET)
     public String getTodoList(ModelMap model) {
         model.addAttribute("tasks", taskDao.findAll());
         model.addAttribute("page","task/list");
