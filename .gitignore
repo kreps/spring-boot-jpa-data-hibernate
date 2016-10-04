@@ -16,5 +16,5 @@ hs_err_pid*
 # IDEA
 .idea/
 *.iml
-springboot-mysql-jpa-hibernate.iml
+spring-mvc-task-list-app.iml
 target/
