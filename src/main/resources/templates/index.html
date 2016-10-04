@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>Simple tasklist app with authentication</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -41,6 +42,9 @@
         <!--<div class="col-md-6">.col-md-6</div>-->
     <!--</div>-->
     <div th:include="partials/footer"></div>
+    <div sec:authorize="isAuthenticated()">
+        User: <span sec:authentication="name">miquel</span>
+    </div>
 </div>
 
 

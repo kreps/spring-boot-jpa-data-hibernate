@@ -1,5 +1,9 @@
 package kreps.controller;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,8 +14,14 @@ public class MainController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String some= "";
+        if (auth != null && auth.isAuthenticated()){
+            some = "is authenticated";
+        }
+
         model.addAttribute("title", "Task manager application");
-        model.addAttribute("summary", "Info sisu ja muud asjad");
+        model.addAttribute("summary", "Info sisu ja muud asjad"+ some);
         model.addAttribute("page","info");
         return "index";
     }
