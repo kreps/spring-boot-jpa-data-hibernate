@@ -21,7 +21,7 @@ public class ExceptionHandlerController {
     public ModelAndView handleError(HttpServletRequest request, Exception e) {
         logger.error("Request: " + request.getRequestURL() + " raised exception.",e);
         ModelAndView mav = new ModelAndView("index");
-        mav.addObject("page","error/error");
+        mav.addObject("page","error");
         mav.addObject("message",e.getMessage());
         return mav;
     }
