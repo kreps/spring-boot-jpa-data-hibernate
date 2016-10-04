@@ -30,17 +30,16 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout()
                     .permitAll()
                     .and()
-//                .httpBasic()
-//                    .and()
-//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                    .and()
+                .httpBasic()
+                    .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                    .and()
                 .csrf().disable();
         //@formatter:on
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-//        web.ignoring().antMatchers(HttpMethod.GET, "/");
         web.ignoring().antMatchers(HttpMethod.GET, "/app.css");
         web.ignoring().antMatchers(HttpMethod.GET, "/webjars/**");
     }
