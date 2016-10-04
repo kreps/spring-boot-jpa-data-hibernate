@@ -21,7 +21,7 @@ public class MainControllerTest {
 
     @Test
     public void testMainInfo() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/info")).andExpect(status().isOk());
+        mockMvc.perform(MockMvcRequestBuilders.get("/")).andExpect(status().isOk());
     }
 
 }

@@ -41,9 +41,9 @@ public class Application {
 
                 Account account2 = new Account("kreps2", hashedPassword);
                 Account a2 = accountRepository.save(account2);
-                taskDao.save(new Task("Show task list 2", a.getId()));
-                taskDao.save(new Task("Commit changes 2", a.getId()));
-                taskDao.save(new Task("Add bootstrap with webjars 2", a.getId()));
+                taskDao.save(new Task("Show task list 2", a2.getId()));
+                taskDao.save(new Task("Commit changes 2", a2.getId()));
+                taskDao.save(new Task("Add bootstrap with webjars 2", a2.getId()));
 
             }
         };

@@ -14,14 +14,8 @@ public class MainController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String some= "";
-        if (auth != null && auth.isAuthenticated()){
-            some = "is authenticated";
-        }
-
         model.addAttribute("title", "Task manager application");
-        model.addAttribute("summary", "Info sisu ja muud asjad"+ some);
+        model.addAttribute("summary", "Info sisu ja muud asjad");
         model.addAttribute("page","info");
         return "index";
     }
