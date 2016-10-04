@@ -22,6 +22,17 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String submitLoginForm(Model model){
+        model.addAttribute("page","task/list");
+        return "index";
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String showLogoutPage(Model model){
+        model.addAttribute("page","logout");
+        return "index";
+    }
 
 
 }
