@@ -30,10 +30,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout()
                     .permitAll()
                     .and()
-                .httpBasic()
-                    .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                    .and()
                 .csrf().disable();
         //@formatter:on
     }
