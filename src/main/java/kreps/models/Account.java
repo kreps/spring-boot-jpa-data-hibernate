@@ -2,25 +2,40 @@ package kreps.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
 public class Account {
 
-    @Id
-    @GeneratedValue
     private long id;
-
-    @NotNull
     private String username;
+    private String password;
+
+    public Account(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+
+    public String getEmail() {
+
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     @NotNull
-    private String password;
+    private String email;
 
     public Account() {
     }
 
+    @Id
+    @GeneratedValue
     public long getId() {
         return id;
     }
@@ -29,6 +44,7 @@ public class Account {
         this.id = id;
     }
 
+    @NotNull
     public String getUsername() {
         return username;
     }
@@ -37,6 +53,7 @@ public class Account {
         this.username = username;
     }
 
+    @NotNull
     public String getPassword() {
         return password;
     }
@@ -45,9 +62,4 @@ public class Account {
         this.password = password;
     }
 
-    public Account(String username, String password) {
-
-        this.username = username;
-        this.password = password;
-    }
 }

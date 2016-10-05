@@ -8,6 +8,11 @@
             <li sec:authorize="isAuthenticated()"><a href="task">Tasks</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+            <li>
+                <div class="navbar-text" sec:authorize="isAuthenticated()">
+                    Logged in as: <span sec:authentication="name"/>
+                </div>
+            </li>
             <li sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>
             <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
         </ul>

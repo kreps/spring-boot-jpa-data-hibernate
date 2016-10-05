@@ -31,7 +31,7 @@ public class Application {
                 accountRepository.deleteAll();
 
 
-                Account account = new Account("kreps", hashedPassword);
+                Account account = new Account("kreps", hashedPassword,"krepssound@gmail.com");
                 Account a = accountRepository.save(account);
                 taskDao.deleteAll();
                 taskDao.save(new Task("Show task list", a.getId()));
@@ -39,7 +39,7 @@ public class Application {
                 taskDao.save(new Task("Add bootstrap with webjars", a.getId()));
 
 
-                Account account2 = new Account("kreps2", hashedPassword);
+                Account account2 = new Account("kreps2", hashedPassword, "kkangro78@gmail.com");
                 Account a2 = accountRepository.save(account2);
                 taskDao.save(new Task("Show task list 2", a2.getId()));
                 taskDao.save(new Task("Commit changes 2", a2.getId()));

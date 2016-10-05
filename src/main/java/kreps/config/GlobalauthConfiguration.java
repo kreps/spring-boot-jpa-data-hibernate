@@ -36,11 +36,9 @@ class GlobalauthConfiguration extends GlobalAuthenticationConfigurerAdapter {
             public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
                 Account account = accountRepository.findByUsername(username);
                 if (account != null) {
-                    return new User(account.getUsername(), account.getPassword(), true, true, true, true,
-                            AuthorityUtils.createAuthorityList("USER"));
+                    return new User(account.getUsername(), account.getPassword(), AuthorityUtils.createAuthorityList("USER"));
                 } else {
-                    throw new UsernameNotFoundException("could not find the user '"
-                            + username + "'");
+                    throw new UsernameNotFoundException("could not find the user '"+ username + "'");
                 }
             }
 
