@@ -13,6 +13,7 @@
                     Logged in as: <span sec:authentication="name"/>
                 </div>
             </li>
+            <li sec:authorize="!isAuthenticated()"><a class="btn" href="/register">Create accout</a></li>
             <li sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>
             <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
         </ul>
