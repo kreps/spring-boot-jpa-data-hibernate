@@ -23,7 +23,8 @@ public class TaskController {
     @RequestMapping(value = "/task", method = RequestMethod.GET)
     public String getTodoList(ModelMap model, Principal principal) {
         model.addAttribute("tasks", taskDao.findByAccountId(accountRepository.findByUsername(principal.getName()).getId()));
-        model.addAttribute("page", "task/list");
+        model.addAttribute("title", "Your tasklist:");
+        model.addAttribute("page", "task/task-list");
         return "index";
     }
 }
